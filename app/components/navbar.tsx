@@ -44,6 +44,9 @@ export default function Navbar() {
           <Link href="/mapa" className="hover:text-primary transition-colors">
             Łódź na mapie
           </Link>
+          <Link href="/uslugi" className="hover:text-primary transition-colors">
+            Usługi
+          </Link>
           <Link
             href="#"
             className="hover:text-primary transition-colors text-primary font-bold"

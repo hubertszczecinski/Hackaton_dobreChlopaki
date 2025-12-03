@@ -47,6 +47,7 @@ interface Location {
   lng: number;
   status: string;
   description?: string;
+  fullDescription?: string; // dłuższy opis dla popup w sekcji usług
   date?: string;
   image?: string;
   votes?: number;
@@ -61,6 +62,7 @@ interface MapComponentProps {
   selectedLocationId?: number | null;
   onMapClick?: (e: L.LeafletMouseEvent) => void;
   reportLocation?: { lat: number; lng: number } | null;
+  showStatus?: boolean; // czy pokazywać status w popup (domyślnie true)
 }
 
 // Component to handle map centering when location is selected
@@ -80,6 +82,52 @@ function MapClickHandler({ onMapClick }: { onMapClick: (e: L.LeafletMouseEvent) 
   return null;
 }
 
+// Component to auto-open popup when marker is selected
+function MarkerWithAutoPopup({
+  position,
+  icon,
+  isSelected,
+  children,
+}: {
+  position: [number, number];
+  icon: L.DivIcon;
+  isSelected: boolean;
+  children: React.ReactNode;
+}) {
+  const markerRef = useRef<L.Marker | null>(null);
+
+  useEffect(() => {
+    if (isSelected && markerRef.current) {
+      // Small delay to ensure marker is rendered
+      setTimeout(() => {
+        markerRef.current?.openPopup();
+      }, 100);
+    } else if (!isSelected && markerRef.current) {
+      // Close popup when deselected
+      markerRef.current.closePopup();
+    }
+  }, [isSelected]);
+
+  return (
+    <Marker
+      eventHandlers={{
+        add: (e) => {
+          markerRef.current = e.target;
+          if (isSelected) {
+            setTimeout(() => {
+              e.target.openPopup();
+            }, 100);
+          }
+        },
+      }}
+      position={position}
+      icon={icon}
+    >
+      {children}
+    </Marker>
+  );
+}
+
 export default function MapComponent({
   activeFilter,
   activeTab,
@@ -87,8 +135,13 @@ export default function MapComponent({
   selectedLocationId,
   onMapClick,
   reportLocation,
+  showStatus = true, // domyślnie pokazuj status
 }: MapComponentProps) {
   const filteredLocations = locations.filter((loc) => {
+    // Jeśli activeTab nie jest podane (np. w sekcji usług), pokazuj wszystkie punkty
+    if (!activeTab) {
+      return true;
+    }
     // Jeśli aktywna zakładka to "wszystkie", pokazuj wszystkie punkty
     if (activeTab === "wszystkie") {
       return true;
@@ -120,6 +173,7 @@ export default function MapComponent({
     if (status === "w trakcie") return orangeIcon;
     if (status === "planowane") return createCustomIcon("#007bff");
     if (status === "inicjatywy") return blueIcon;
+    if (status === "wszystkie") return createCustomIcon("#0075a7"); // Primary color for services
     return createCustomIcon("#007bff");
   };
 
@@ -147,15 +201,17 @@ export default function MapComponent({
       {filteredLocations.map((location) => {
         const icon = getIcon(location.status);
         const isInitiative = location.status === "inicjatywy";
+        const isSelected = selectedLocationId === location.id;
 
         return (
-          <Marker
+          <MarkerWithAutoPopup
             key={location.id}
             position={[location.lat, location.lng]}
             icon={icon}
+            isSelected={isSelected}
           >
             <Popup>
-              <div className="min-w-[250px]">
+              <div className="min-w-[250px] max-w-[350px]">
                 <h4 className="font-bold text-sm mb-2">{location.name}</h4>
                 {location.image && (
                   <div className="mb-2">
@@ -168,10 +224,14 @@ export default function MapComponent({
                     />
                   </div>
                 )}
-                {location.description && (
+                {/* Pokazuj fullDescription jeśli dostępne, w przeciwnym razie description */}
+                {location.fullDescription ? (
+                  <p className="text-xs text-gray-700 mb-2 leading-relaxed">{location.fullDescription}</p>
+                ) : location.description ? (
                   <p className="text-xs text-gray-600 mb-2">{location.description}</p>
-                )}
-                {!isInitiative && (
+                ) : null}
+                {/* Status pokazujemy tylko jeśli showStatus jest true i to nie jest inicjatywa */}
+                {showStatus && !isInitiative && (
                   <>
                     <p className="text-xs">
                       <span className="font-semibold">Status:</span>{" "}
@@ -215,7 +275,7 @@ export default function MapComponent({
                 )}
               </div>
             </Popup>
-          </Marker>
+          </MarkerWithAutoPopup>
         );
       })}
 
