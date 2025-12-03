@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import CarouselStack from "./CarouselStack";
 
 // Dynamically import map component to avoid SSR issues
 const MapComponent = dynamic(() => import("./MapComponent"), {
@@ -296,36 +296,21 @@ export default function MapaPage() {
               </div>
             </div>
 
+            {/* Carousel Stack Component */}
+            <div className="mb-4">
+              <CarouselStack
+                photos={beforeAfterPhotos}
+                currentIndex={currentPhotoIndex}
+                onIndexChange={setCurrentPhotoIndex}
+              />
+            </div>
+
+            {/* Project Title and Interaction Section */}
             <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md">
               <div className="p-3 bg-gray-50">
                 <h3 className="font-bold text-sm">
                   {beforeAfterPhotos[currentPhotoIndex].projectTitle}
                 </h3>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2 p-2">
-                <div>
-                  <p className="text-xs font-semibold mb-1 text-gray-600">PRZED</p>
-                  <div className="relative h-40">
-                    <Image
-                      src={beforeAfterPhotos[currentPhotoIndex].before}
-                      alt="Przed"
-                      fill
-                      className="object-cover rounded"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold mb-1 text-gray-600">PO</p>
-                  <div className="relative h-40">
-                    <Image
-                      src={beforeAfterPhotos[currentPhotoIndex].after}
-                      alt="Po"
-                      fill
-                      className="object-cover rounded"
-                    />
-                  </div>
-                </div>
               </div>
 
               <div className="p-3 border-t border-gray-200">
@@ -355,4 +340,3 @@ export default function MapaPage() {
     </main>
   );
 }
-
