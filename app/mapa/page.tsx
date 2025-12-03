@@ -92,6 +92,18 @@ const locations = [
     date: "2024-03-05",
     image: "/hero.jpg",
   },
+  {
+    id: 8,
+    name: "Bezpłatne WiFi w parkach miejskich",
+    lat: 51.765,
+    lng: 19.452,
+    status: "inicjatywy",
+    description:
+      "Projekt zakłada instalację bezpłatnego WiFi we wszystkich parkach miejskich w Łodzi, aby mieszkańcy mogli korzystać z internetu podczas wypoczynku na świeżym powietrzu.",
+    votes: 654,
+    date: "2024-03-15",
+    image: "/hero.jpg",
+  },
 ];
 
 // Sample data for before/after photos
@@ -218,8 +230,18 @@ export default function MapaPage() {
     <main className="min-h-screen flex flex-col font-sans text-text-dark bg-gray-50 pt-20">
       <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)] relative z-10">
         {/* Left Column - 1/4 width */}
-        <div className="w-full lg:w-1/4 bg-linear-to-b from-white to-gray-50 border-r-2 border-primary/20 relative z-10 shadow-lg">
-          <div className="p-5 space-y-5">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full lg:w-1/4 bg-linear-to-b from-white to-gray-50 border-r-2 border-primary/20 relative z-10 shadow-lg"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="p-5 space-y-5"
+          >
             {/* Pokaż wszystko Button */}
             <motion.button
               onClick={() => {
@@ -623,13 +645,23 @@ export default function MapaPage() {
             >
               <span>Zgłoś problem</span>
             </motion.button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Column - 3/4 width with Map */}
-        <div className="w-full lg:w-3/4 flex flex-col relative z-10">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="w-full lg:w-3/4 flex flex-col relative z-10"
+        >
           {/* Map Section */}
-          <div className="flex-1 relative min-h-[400px] z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex-1 relative min-h-[500px] z-10"
+          >
             <MapComponent
               activeFilter={activeFilter}
               activeTab={activeTab}
@@ -638,13 +670,72 @@ export default function MapaPage() {
               onMapClick={handleMapClick}
               reportLocation={reportLocation}
             />
-          </div>
+          </motion.div>
 
-          {/* Before/After Section - Below Map */}
+          {/* Najpopularniejsze inicjatywy tego miesiąca */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-white border-t-2 border-primary/20 p-6 shadow-lg"
+          >
+            <h2 className="text-xl font-bold text-primary uppercase mb-4 tracking-wider">
+              Najpopularniejsze inicjatywy tego miesiąca
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {locations
+                .filter((loc) => loc.status === "inicjatywy")
+                .sort((a, b) => (b.votes || 0) - (a.votes || 0))
+                .slice(0, 3)
+                .map((initiative, index) => (
+                  <motion.div
+                    key={initiative.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                    className="bg-gradient-to-br from-white to-gray-50 border-2 border-primary/20 rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 hover:border-primary/40"
+                  >
+                    <h3 className="font-bold text-base text-primary mb-2">
+                      {initiative.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-3">
+                      {initiative.description}
+                    </p>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">👍</span>
+                        <span className="text-sm font-semibold text-gray-700">
+                          {initiative.votes || 0} głosów
+                        </span>
+                      </div>
+                      {initiative.date && (
+                        <span className="text-xs text-gray-500">
+                          {initiative.date}
+                        </span>
+                      )}
+                    </div>
+                    <motion.button
+                      onClick={() => {
+                        setActiveTab("inicjatywy");
+                        setSelectedLocationId(initiative.id);
+                        setIsInicjatywyExpanded(true);
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full px-4 py-2 bg-primary text-white text-sm font-bold uppercase hover:bg-primary/90 transition-colors rounded-lg shadow-md"
+                    >
+                      Zobacz na mapie
+                    </motion.button>
+                  </motion.div>
+                ))}
+            </div>
+          </motion.div>
+
+          {/* Before/After Section - Below Map */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="bg-linear-to-b from-white via-gray-50 to-white border-t-2 border-primary/20 p-6 shadow-xl"
           >
             <div className="flex items-center justify-between mb-6">
@@ -870,7 +961,7 @@ export default function MapaPage() {
               </div>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Report Problem Overlay */}

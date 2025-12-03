@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
+import { motion } from "motion/react";
 
 // Map component reused from Łódź na mapie (leaflet integration)
 const MapComponent = dynamic(() => import("../mapa/MapComponent"), {
@@ -351,7 +352,12 @@ export default function UslugiPage() {
   return (
     <main className="min-h-screen flex flex-col font-sans text-text-dark bg-gray-50">
       <div className="max-w-6xl mx-auto w-full px-4 py-6 space-y-4">
-        <header className="space-y-2">
+        <motion.header
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-2"
+        >
           <h1 className="text-2xl md:text-3xl font-bold text-primary uppercase">
             Usługi na mapie
           </h1>
@@ -360,10 +366,15 @@ export default function UslugiPage() {
             <span className="font-semibold">mechanik aut elektrycznych</span>,
             serwis rowerów czy punkty ładowania – a my pokażemy je na mapie.
           </p>
-        </header>
+        </motion.header>
 
         {/* Search bar */}
-        <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col md:flex-row gap-3 items-stretch md:items-center"
+        >
           <div className="flex-1 relative">
             <input
               type="text"
@@ -398,11 +409,21 @@ export default function UslugiPage() {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 items-stretch">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 items-stretch"
+        >
           {/* List of services */}
-          <section className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm overflow-y-auto max-h-[420px]">
+          <motion.section
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm overflow-y-auto max-h-[420px]"
+          >
             <h2 className="text-sm font-bold uppercase text-primary mb-3 border-b border-gray-200 pb-2">
               Znalezione usługi
             </h2>
@@ -413,12 +434,16 @@ export default function UslugiPage() {
               </p>
             ) : (
               <ul className="space-y-3">
-                {filteredServices.map((service) => {
+                {filteredServices.map((service, index) => {
                   const isActive = selectedServiceId === service.id;
                   return (
-                    <li
+                    <motion.li
                       key={service.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: 0.1 * index }}
                       onClick={() => setSelectedServiceId(service.id)}
+                      whileHover={{ scale: 1.02, x: 4 }}
                       className={`border border-gray-200 rounded-md p-3 hover:border-primary hover:shadow-sm transition-colors cursor-pointer ${
                         isActive ? "border-primary bg-blue-50" : ""
                       }`}
@@ -432,23 +457,28 @@ export default function UslugiPage() {
                       <p className="text-[11px] text-gray-500 mt-1 italic">
                         {service.category}
                       </p>
-                    </li>
+                    </motion.li>
                   );
                 })}
               </ul>
             )}
-          </section>
+          </motion.section>
 
           {/* Map with services */}
-          <section className="bg-white border border-gray-200 rounded-lg shadow-sm min-h-80 lg:min-h-[420px] overflow-hidden">
+          <motion.section
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-white border border-gray-200 rounded-lg shadow-sm min-h-80 lg:min-h-[420px] overflow-hidden"
+          >
             <MapComponent
               activeFilter="wszystkie"
               locations={filteredServices}
               selectedLocationId={selectedServiceId}
               showStatus={false}
             />
-          </section>
-        </div>
+          </motion.section>
+        </motion.div>
       </div>
     </main>
   );
