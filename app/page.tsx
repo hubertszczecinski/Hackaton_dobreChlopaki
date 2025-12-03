@@ -33,10 +33,13 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* News Item 1 */}
             <div className="group cursor-pointer">
-              <div className="relative h-64 overflow-hidden mb-4">
-                <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
-                  [Obrazek Aktualności 1]
-                </div>
+              <div className="relative h-64 overflow-hidden mb-4 rounded-lg">
+                <Image
+                  src="/aktualnosci1.png"
+                  alt="Święta z Kartą Łodzianina 2025"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
                 <div className="absolute inset-0 bg-secondary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
                   Czytaj więcej →
                 </div>
@@ -48,10 +51,13 @@ export default function Home() {
 
             {/* News Item 2 */}
             <div className="group cursor-pointer">
-              <div className="relative h-64 overflow-hidden mb-4">
-                <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
-                  [Obrazek Aktualności 2]
-                </div>
+              <div className="relative h-64 overflow-hidden mb-4 rounded-lg">
+                <Image
+                  src="/aktualnosci2.png"
+                  alt="Nowi partnerzy w Karcie Łodzianina"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
                 <div className="absolute inset-0 bg-secondary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
                   Czytaj więcej →
                 </div>
@@ -63,10 +69,13 @@ export default function Home() {
 
             {/* News Item 3 */}
             <div className="group cursor-pointer">
-              <div className="relative h-64 overflow-hidden mb-4">
-                <div className="absolute inset-0 bg-gray-200 flex items-center justify-center text-gray-400">
-                  [Obrazek Aktualności 3]
-                </div>
+              <div className="relative h-64 overflow-hidden mb-4 rounded-lg">
+                <Image
+                  src="/aktualnosci3.png"
+                  alt="Studencie, Łódź ma dla Ciebie zniżki!"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                />
                 <div className="absolute inset-0 bg-secondary/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">
                   Czytaj więcej →
                 </div>
@@ -124,21 +133,45 @@ export default function Home() {
             Nasi Partnerzy
           </h2>
           <div className="flex flex-wrap justify-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Placeholders for partners */}
-            <div className="w-32 h-16 bg-gray-300 flex items-center justify-center text-xs">
-              Partner 1
+            <div className="w-32 h-16 relative">
+              <Image
+                src="/logo1.png"
+                alt="Partner 1"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="w-32 h-16 bg-gray-300 flex items-center justify-center text-xs">
-              Partner 2
+            <div className="w-32 h-16 relative">
+              <Image
+                src="/logo2.webp"
+                alt="Partner 2"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="w-32 h-16 bg-gray-300 flex items-center justify-center text-xs">
-              Partner 3
+            <div className="w-32 h-16 relative">
+              <Image
+                src="/logo3.jpeg"
+                alt="Partner 3"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="w-32 h-16 bg-gray-300 flex items-center justify-center text-xs">
-              Partner 4
+            <div className="w-32 h-16 relative">
+              <Image
+                src="/logo4.jpg"
+                alt="Partner 4"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="w-32 h-16 bg-gray-300 flex items-center justify-center text-xs">
-              Partner 5
+            <div className="w-32 h-16 relative">
+              <Image
+                src="/logo5.webp"
+                alt="Partner 5"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </div>
