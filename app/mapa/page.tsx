@@ -27,6 +27,8 @@ const locations = [
     description: "Nowe centrum obsługi klienta w centrum miasta",
     date: "2024-01-15",
     image: "/hero.jpg",
+    progress: 65,
+    daysRemaining: 45,
   },
   {
     id: 2,
@@ -37,6 +39,8 @@ const locations = [
     description: "Kompleksowa rewitalizacja głównej ulicy Łodzi",
     date: "2024-01-15",
     image: "/hero.jpg",
+    progress: 42,
+    daysRemaining: 78,
   },
   {
     id: 3,
@@ -47,6 +51,8 @@ const locations = [
     description: "Zakończona modernizacja parku z nową infrastrukturą",
     date: "2023-12-01",
     image: "/hero.jpg",
+    progress: 100,
+    daysRemaining: 0,
   },
   {
     id: 4,
@@ -57,6 +63,8 @@ const locations = [
     description: "Przebudowa głównego placu miasta",
     date: "2024-02-01",
     image: "/hero.jpg",
+    progress: 28,
+    daysRemaining: 120,
   },
   {
     id: 5,
@@ -67,6 +75,8 @@ const locations = [
     description: "Planowana rewitalizacja kompleksu Manufaktura",
     date: "2024-06-01",
     image: "/hero.jpg",
+    progress: 0,
+    daysRemaining: 180,
   },
   {
     id: 6,
@@ -318,7 +328,7 @@ export default function MapaPage() {
                             : "bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200"
                         }`}
                       >
-                        Planowane
+                        Zaplanowane
                       </motion.button>
                       <motion.button
                         onClick={() => setActiveFilter("w trakcie")}
@@ -883,9 +893,7 @@ export default function MapaPage() {
                       draggable={false}
                       onDragStart={(e) => e.preventDefault()}
                       style={{
-                        clipPath: `inset(0 calc(${
-                          100 - sliderValue
-                        }% + 4px) 0 0)`,
+                        clipPath: `inset(0 ${100 - sliderValue}% 0 0)`,
                       }}
                     />
                   </div>
@@ -894,7 +902,7 @@ export default function MapaPage() {
                   <motion.div
                     className="absolute top-0 bottom-0 flex items-center justify-center pointer-events-none"
                     style={{
-                      left: `calc(${sliderValue}% + 8px)`,
+                      left: `${sliderValue}%`,
                       transform: "translateX(-50%)",
                     }}
                     animate={{

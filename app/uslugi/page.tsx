@@ -380,34 +380,38 @@ export default function UslugiPage() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj usług, np. „mechanik aut elektrycznych”, „ładowanie auta”..."
+              placeholder="Szukaj usług, np. mechanik aut elektrycznych, ładowanie auta..."
               className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
               🔍
             </span>
           </div>
-          <div className="flex flex-col items-end gap-1 text-right">
-            <label className="flex items-center gap-2 text-[11px] md:text-xs text-gray-600 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={useAi}
-                onChange={(e) => setUseAi(e.target.checked)}
-              />
-              <span>Użyj AI do dopasowania po tagach</span>
-            </label>
-            <div className="text-xs md:text-sm text-gray-500">
-              {isLoadingAi && useAi ? (
-                <span className="text-primary">Analizuję zapytanie AI...</span>
-              ) : (
-                <>
-                  Wyniki:{" "}
-                  <span className="font-semibold text-primary">
-                    {filteredServices.length}
-                  </span>
-                </>
-              )}
-            </div>
+          {/* Loading dots or results count */}
+          <div className="flex items-center justify-center min-w-[200px] h-12">
+            {isLoadingAi && useAi && query.trim() ? (
+              <div className="flex items-center gap-2">
+                {[0, 1, 2].map((index) => (
+                  <motion.div
+                    key={index}
+                    className="w-3 h-3 bg-primary rounded-full"
+                    animate={{
+                      y: [0, -12, 0],
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      repeat: Infinity,
+                      delay: index * 0.2,
+                      ease: "easeInOut",
+                    }}
+                  />
+                ))}
+              </div>
+            ) : query.trim() && filteredServices.length > 0 ? (
+              <div className="text-sm font-semibold text-primary">
+                Znaleziono {filteredServices.length} {filteredServices.length === 1 ? 'wynik' : filteredServices.length < 5 ? 'wyniki' : 'wyników'}
+              </div>
+            ) : null}
           </div>
         </motion.div>
 

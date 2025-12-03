@@ -51,6 +51,8 @@ interface Location {
   date?: string;
   image?: string;
   votes?: number;
+  progress?: number; // postęp projektu 0-100 (tylko dla zmian)
+  daysRemaining?: number; // planowana ilość dni do zakończenia (tylko dla zmian)
 }
 
 type TabType = "wszystkie" | "zmiany" | "inicjatywy" | "zglos-problem";
@@ -233,7 +235,7 @@ export default function MapComponent({
                 {/* Status pokazujemy tylko jeśli showStatus jest true i to nie jest inicjatywa */}
                 {showStatus && !isInitiative && (
                   <>
-                    <p className="text-xs">
+                    <p className="text-xs mb-2">
                       <span className="font-semibold">Status:</span>{" "}
                       <span
                         className={`inline-block px-2 py-1 rounded text-xs ${
@@ -247,6 +249,26 @@ export default function MapComponent({
                         {location.status}
                       </span>
                     </p>
+                    {/* Progress bar for changes - only for "w trakcie" */}
+                    {location.progress !== undefined && location.status === "w trakcie" && (
+                      <div className="mb-2">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-xs font-semibold text-gray-700">Postęp:</span>
+                          <span className="text-xs font-bold text-primary">{location.progress}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                          <div
+                            className="h-full rounded-full transition-all duration-500 bg-orange-500"
+                            style={{ width: `${location.progress}%` }}
+                          />
+                        </div>
+                        {location.daysRemaining !== undefined && location.daysRemaining > 0 && (
+                          <p className="text-xs text-gray-600 mt-1">
+                            Planowane zakończenie za: <span className="font-semibold text-primary">{location.daysRemaining} dni</span>
+                          </p>
+                        )}
+                      </div>
+                    )}
                     {location.date && (
                       <p className="text-xs mt-1">
                         <span className="font-semibold">Data:</span> {location.date}
