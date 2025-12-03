@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 // Custom icons will be used, but we need to set a default to avoid errors
 if (typeof window !== "undefined") {
@@ -65,6 +66,8 @@ interface MapComponentProps {
   onMapClick?: (e: L.LeafletMouseEvent) => void;
   reportLocation?: { lat: number; lng: number } | null;
   showStatus?: boolean; // czy pokazywać status w popup (domyślnie true)
+  onVote?: (initiativeId: number) => void;
+  votedInitiatives?: Set<number>;
 }
 
 // Component to handle map centering when location is selected
@@ -138,6 +141,8 @@ export default function MapComponent({
   onMapClick,
   reportLocation,
   showStatus = true, // domyślnie pokazuj status
+  onVote,
+  votedInitiatives = new Set(),
 }: MapComponentProps) {
   const filteredLocations = locations.filter((loc) => {
     // Jeśli activeTab nie jest podane (np. w sekcji usług), pokazuj wszystkie punkty
@@ -278,20 +283,50 @@ export default function MapComponent({
                 )}
                 {isInitiative && location.votes !== undefined && (
                   <>
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="font-semibold">👍 {location.votes} głosów</span>
+                    <div className="flex justify-between items-center text-xs mb-2">
+                      <div className="flex items-center gap-2 relative">
+                        <motion.span
+                          key={location.votes}
+                          initial={{ y: 0, scale: 1 }}
+                          animate={{ 
+                            y: votedInitiatives.has(location.id) ? [-10, 0] : 0,
+                            scale: votedInitiatives.has(location.id) ? [1.3, 1] : 1
+                          }}
+                          transition={{ duration: 0.5, ease: "easeOut" }}
+                          className="text-lg"
+                        >
+                          👍
+                        </motion.span>
+                        <span className="font-semibold">
+                          <motion.span
+                            key={location.votes}
+                            initial={{ scale: 1 }}
+                            animate={{ scale: votedInitiatives.has(location.id) ? [1.2, 1] : 1 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {location.votes}
+                          </motion.span>{" "}
+                          {location.votes === 1 ? "głos" : location.votes < 5 ? "głosy" : "głosów"}
+                        </span>
+                      </div>
                       {location.date && (
                         <span className="text-gray-500">{location.date}</span>
                       )}
                     </div>
                     <button
                       onClick={() => {
-                        // In a real app, this would trigger a vote
-                        alert("Głosowanie - funkcja w trakcie implementacji");
+                        if (!votedInitiatives.has(location.id) && onVote) {
+                          onVote(location.id);
+                        }
                       }}
-                      className="mt-2 w-full px-3 py-1 bg-secondary text-white text-xs font-bold uppercase hover:bg-opacity-90 transition-colors"
+                      disabled={votedInitiatives.has(location.id)}
+                      className={`mt-2 w-full px-3 py-1 text-xs font-bold uppercase transition-all duration-300 ${
+                        votedInitiatives.has(location.id)
+                          ? "bg-green-500 text-white cursor-not-allowed"
+                          : "bg-secondary text-white hover:bg-opacity-90"
+                      }`}
                     >
-                      Zagłosuj
+                      {votedInitiatives.has(location.id) ? "✓ Zagłosowano" : "Zagłosuj"}
                     </button>
                   </>
                 )}

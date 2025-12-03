@@ -34,7 +34,8 @@ const services: ServiceLocation[] = [
     lng: 19.456,
     status: "wszystkie",
     description: "Specjalistyczny mechanik aut elektrycznych i hybrydowych.",
-    fullDescription: "Profesjonalny serwis specjalizujący się w naprawie i konserwacji pojazdów elektrycznych oraz hybrydowych. Oferujemy kompleksową obsługę techniczną, diagnostykę układów elektrycznych, wymianę baterii oraz przeglądy okresowe. Zapraszamy od poniedziałku do piątku w godzinach 8:00-18:00.",
+    fullDescription:
+      "Profesjonalny serwis specjalizujący się w naprawie i konserwacji pojazdów elektrycznych oraz hybrydowych. Oferujemy kompleksową obsługę techniczną, diagnostykę układów elektrycznych, wymianę baterii oraz przeglądy okresowe. Zapraszamy od poniedziałku do piątku w godzinach 8:00-18:00.",
     category: "mechanik aut elektrycznych, serwis samochodów",
     tags: [
       "mechanik",
@@ -56,7 +57,8 @@ const services: ServiceLocation[] = [
     lng: 19.45,
     status: "wszystkie",
     description: "Serwis i wypożyczalnia rowerów miejskich i elektrycznych.",
-    fullDescription: "Kompleksowe centrum rowerowe oferujące profesjonalny serwis, naprawy oraz wypożyczalnię rowerów miejskich i elektrycznych. Zapewniamy pełny serwis techniczny, wymianę części, regulację hamulców i przerzutek. Posiadamy również sklep z akcesoriami rowerowymi.",
+    fullDescription:
+      "Kompleksowe centrum rowerowe oferujące profesjonalny serwis, naprawy oraz wypożyczalnię rowerów miejskich i elektrycznych. Zapewniamy pełny serwis techniczny, wymianę części, regulację hamulców i przerzutek. Posiadamy również sklep z akcesoriami rowerowymi.",
     category: "serwis rowerów, rowery elektryczne",
     tags: [
       "rowery",
@@ -76,7 +78,8 @@ const services: ServiceLocation[] = [
     lng: 19.438,
     status: "wszystkie",
     description: "Stacja szybkiego ładowania pojazdów elektrycznych.",
-    fullDescription: "Nowoczesna stacja szybkiego ładowania pojazdów elektrycznych zlokalizowana przy kompleksie Manufaktura. Oferujemy ładowanie prądem stałym (DC) o mocy do 150 kW, co pozwala na naładowanie większości pojazdów w ciągu 20-40 minut. Stacja jest dostępna 24/7 i obsługuje wszystkie standardowe złącza.",
+    fullDescription:
+      "Nowoczesna stacja szybkiego ładowania pojazdów elektrycznych zlokalizowana przy kompleksie Manufaktura. Oferujemy ładowanie prądem stałym (DC) o mocy do 150 kW, co pozwala na naładowanie większości pojazdów w ciągu 20-40 minut. Stacja jest dostępna 24/7 i obsługuje wszystkie standardowe złącza.",
     category: "ładowanie aut elektrycznych, stacja ładowania",
     tags: [
       "ładowanie",
@@ -97,7 +100,8 @@ const services: ServiceLocation[] = [
     lng: 19.47,
     status: "wszystkie",
     description: "Naprawy i przeglądy samochodów niskoemisyjnych.",
-    fullDescription: "Warsztat samochodowy specjalizujący się w naprawie i przeglądach pojazdów niskoemisyjnych oraz ekologicznych. Oferujemy kompleksową obsługę pojazdów hybrydowych, elektrycznych oraz z napędem CNG/LPG. Wykonujemy przeglądy techniczne, diagnostykę komputerową oraz naprawy układów napędowych.",
+    fullDescription:
+      "Warsztat samochodowy specjalizujący się w naprawie i przeglądach pojazdów niskoemisyjnych oraz ekologicznych. Oferujemy kompleksową obsługę pojazdów hybrydowych, elektrycznych oraz z napędem CNG/LPG. Wykonujemy przeglądy techniczne, diagnostykę komputerową oraz naprawy układów napędowych.",
     category: "mechanik, samochody ekologiczne",
     tags: [
       "mechanik",
@@ -118,7 +122,8 @@ const services: ServiceLocation[] = [
     status: "wszystkie",
     description:
       "Przychodnia POZ, lekarze rodzinni, pediatrzy oraz podstawowe badania diagnostyczne.",
-    fullDescription: "Nowoczesna przychodnia podstawowej opieki zdrowotnej oferująca kompleksową opiekę medyczną dla całej rodziny. W naszej placówce przyjmują doświadczeni lekarze rodzinni oraz pediatrzy. Oferujemy podstawowe badania diagnostyczne, szczepienia oraz porady specjalistyczne. Przychodnia współpracuje z NFZ oraz oferuje wizyty prywatne.",
+    fullDescription:
+      "Nowoczesna przychodnia podstawowej opieki zdrowotnej oferująca kompleksową opiekę medyczną dla całej rodziny. W naszej placówce przyjmują doświadczeni lekarze rodzinni oraz pediatrzy. Oferujemy podstawowe badania diagnostyczne, szczepienia oraz porady specjalistyczne. Przychodnia współpracuje z NFZ oraz oferuje wizyty prywatne.",
     category: "przychodnia, lekarz rodzinny, zdrowie",
     tags: [
       "przychodnia",
@@ -137,7 +142,8 @@ const services: ServiceLocation[] = [
     status: "wszystkie",
     description:
       "Nowoczesna biblioteka z czytelnią, strefą coworkingową i dostępem do e-booków.",
-    fullDescription: "Nowoczesna biblioteka miejska oferująca szeroki wybór książek, czasopism oraz dostęp do e-booków i audiobooków. W naszej placówce znajdziesz przestronną czytelnię z miejscami do nauki, strefę coworkingową z szybkim internetem oraz salę konferencyjną. Organizujemy regularne spotkania autorskie i warsztaty edukacyjne.",
+    fullDescription:
+      "Nowoczesna biblioteka miejska oferująca szeroki wybór książek, czasopism oraz dostęp do e-booków i audiobooków. W naszej placówce znajdziesz przestronną czytelnię z miejscami do nauki, strefę coworkingową z szybkim internetem oraz salę konferencyjną. Organizujemy regularne spotkania autorskie i warsztaty edukacyjne.",
     category: "biblioteka, edukacja, kultura",
     tags: [
       "biblioteka",
@@ -156,7 +162,8 @@ const services: ServiceLocation[] = [
     status: "wszystkie",
     description:
       "Siłownia, fitness, basen i zajęcia grupowe dla dorosłych i dzieci.",
-    fullDescription: "Nowoczesne centrum sportowe oferujące pełną gamę aktywności fizycznych. W naszej ofercie znajdziesz profesjonalnie wyposażoną siłownię, basen olimpijski, saunę, jacuzzi oraz szeroki wybór zajęć grupowych (joga, pilates, spinning, aerobik). Organizujemy również zajęcia dla dzieci i młodzieży.",
+    fullDescription:
+      "Nowoczesne centrum sportowe oferujące pełną gamę aktywności fizycznych. W naszej ofercie znajdziesz profesjonalnie wyposażoną siłownię, basen olimpijski, saunę, jacuzzi oraz szeroki wybór zajęć grupowych (joga, pilates, spinning, aerobik). Organizujemy również zajęcia dla dzieci i młodzieży.",
     category: "sport, fitness, rekreacja",
     tags: [
       "siłownia",
@@ -175,7 +182,8 @@ const services: ServiceLocation[] = [
     status: "wszystkie",
     description:
       "Przestrzeń coworkingowa z salami konferencyjnymi, szybkim internetem i dostępem 24/7.",
-    fullDescription: "Nowoczesna przestrzeń coworkingowa zlokalizowana w pobliżu dworca Łódź Fabryczna. Oferujemy elastyczne miejsca pracy, biurka dedykowane, sale konferencyjne oraz przestronne open space. Wszystkie miejsca wyposażone są w szybki internet światłowodowy oraz ergonomiczne krzesła. Dostęp 24/7 dla członków.",
+    fullDescription:
+      "Nowoczesna przestrzeń coworkingowa zlokalizowana w pobliżu dworca Łódź Fabryczna. Oferujemy elastyczne miejsca pracy, biurka dedykowane, sale konferencyjne oraz przestronne open space. Wszystkie miejsca wyposażone są w szybki internet światłowodowy oraz ergonomiczne krzesła. Dostęp 24/7 dla członków.",
     category: "coworking, biuro, praca zdalna",
     tags: [
       "coworking",
@@ -194,7 +202,8 @@ const services: ServiceLocation[] = [
     status: "wszystkie",
     description:
       "Publiczne przedszkole z ogrodem, zajęciami językowymi i programem proekologicznym.",
-    fullDescription: "Publiczne przedszkole miejskie oferujące opiekę i edukację dla dzieci w wieku 3-6 lat. Nasza placówka posiada przestronny ogród z placem zabaw, nowoczesne sale dydaktyczne oraz wykwalifikowaną kadrę pedagogiczną. Oferujemy zajęcia językowe (angielski, niemiecki), zajęcia artystyczne, muzyczne oraz sportowe.",
+    fullDescription:
+      "Publiczne przedszkole miejskie oferujące opiekę i edukację dla dzieci w wieku 3-6 lat. Nasza placówka posiada przestronny ogród z placem zabaw, nowoczesne sale dydaktyczne oraz wykwalifikowaną kadrę pedagogiczną. Oferujemy zajęcia językowe (angielski, niemiecki), zajęcia artystyczne, muzyczne oraz sportowe.",
     category: "przedszkole, edukacja dzieci",
     tags: [
       "przedszkole",
@@ -362,9 +371,13 @@ export default function UslugiPage() {
             Usługi na mapie
           </h1>
           <p className="text-sm md:text-base text-gray-600 max-w-2xl">
-            Wyszukaj interesujące Cię usługi w Łodzi, takie jak{" "}
-            <span className="font-semibold">mechanik aut elektrycznych</span>,
-            serwis rowerów czy punkty ładowania – a my pokażemy je na mapie.
+            Skorzystaj już dziś z{" "}
+            <span className="font-semibold text-primary">
+              Inteligentnej Wyszukiwarki Łodzi
+            </span>{" "}
+            i zaplanuj swój dzień! Znajdź mechanika, serwis rowerów, punkty
+            ładowania i wiele więcej – wszystko w jednym miejscu, z dokładną
+            lokalizacją na mapie.
           </p>
         </motion.header>
 
@@ -380,7 +393,7 @@ export default function UslugiPage() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj usług, np. mechanik aut elektrycznych, ładowanie auta..."
+              placeholder="Szukaj usług, np. Miejsce do spędzenia wieczoru z partnerem..."
               className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
@@ -409,7 +422,12 @@ export default function UslugiPage() {
               </div>
             ) : query.trim() && filteredServices.length > 0 ? (
               <div className="text-sm font-semibold text-primary">
-                Znaleziono {filteredServices.length} {filteredServices.length === 1 ? 'wynik' : filteredServices.length < 5 ? 'wyniki' : 'wyników'}
+                Znaleziono {filteredServices.length}{" "}
+                {filteredServices.length === 1
+                  ? "wynik"
+                  : filteredServices.length < 5
+                  ? "wyniki"
+                  : "wyników"}
               </div>
             ) : null}
           </div>

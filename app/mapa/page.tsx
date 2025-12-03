@@ -114,6 +114,174 @@ const locations = [
     date: "2024-03-15",
     image: "/hero.jpg",
   },
+  {
+    id: 9,
+    name: "Remont ul. Narutowicza",
+    lat: 51.747,
+    lng: 19.462,
+    status: "w trakcie",
+    description: "Kompleksowy remont ulicy z modernizacją nawierzchni i infrastruktury",
+    date: "2024-02-10",
+    image: "/hero.jpg",
+    progress: 55,
+    daysRemaining: 60,
+  },
+  {
+    id: 10,
+    name: "Rewitalizacja Parku Helenów",
+    lat: 51.771,
+    lng: 19.441,
+    status: "w trakcie",
+    description: "Modernizacja parku z nowymi ścieżkami, placem zabaw i oświetleniem",
+    date: "2024-01-20",
+    image: "/hero.jpg",
+    progress: 38,
+    daysRemaining: 95,
+  },
+  {
+    id: 11,
+    name: "Budowa nowej biblioteki na Widzewie",
+    lat: 51.733,
+    lng: 19.478,
+    status: "planowane",
+    description: "Nowoczesna biblioteka z czytelnią i przestrzenią coworkingową",
+    date: "2024-07-01",
+    image: "/hero.jpg",
+    progress: 0,
+    daysRemaining: 210,
+  },
+  {
+    id: 12,
+    name: "Modernizacja dworca Łódź Kaliska",
+    lat: 51.757,
+    lng: 19.428,
+    status: "w trakcie",
+    description: "Przebudowa dworca z nowoczesną infrastrukturą i udogodnieniami",
+    date: "2024-01-05",
+    image: "/hero.jpg",
+    progress: 72,
+    daysRemaining: 35,
+  },
+  {
+    id: 13,
+    name: "Więcej ścieżek rowerowych w centrum",
+    lat: 51.761,
+    lng: 19.451,
+    status: "inicjatywy",
+    description:
+      "Inicjatywa zakłada rozbudowę sieci ścieżek rowerowych w centrum miasta, aby ułatwić mieszkańcom poruszanie się rowerem.",
+    votes: 1123,
+    date: "2024-03-20",
+    image: "/hero.jpg",
+  },
+  {
+    id: 14,
+    name: "Bezpłatne zajęcia sportowe dla seniorów",
+    lat: 51.754,
+    lng: 19.435,
+    status: "inicjatywy",
+    description:
+      "Projekt organizacji bezpłatnych zajęć sportowych i rekreacyjnych dla seniorów w parkach miejskich.",
+    votes: 756,
+    date: "2024-03-12",
+    image: "/hero.jpg",
+  },
+  {
+    id: 15,
+    name: "Rewitalizacja ul. Wólczańskiej",
+    lat: 51.763,
+    lng: 19.472,
+    status: "w trakcie",
+    description: "Kompleksowa rewitalizacja ulicy z nową nawierzchnią i zielenią",
+    date: "2024-02-15",
+    image: "/hero.jpg",
+    progress: 48,
+    daysRemaining: 85,
+  },
+  {
+    id: 16,
+    name: "Modernizacja basenu Fala",
+    lat: 51.778,
+    lng: 19.444,
+    status: "planowane",
+    description: "Przebudowa basenu z nowoczesnym wyposażeniem i udogodnieniami",
+    date: "2024-08-15",
+    image: "/hero.jpg",
+    progress: 0,
+    daysRemaining: 240,
+  },
+  {
+    id: 17,
+    name: "Więcej miejsc do recyklingu",
+    lat: 51.742,
+    lng: 19.449,
+    status: "inicjatywy",
+    description:
+      "Inicjatywa zakłada zwiększenie liczby punktów selektywnej zbiórki odpadów w różnych dzielnicach miasta.",
+    votes: 934,
+    date: "2024-03-08",
+    image: "/hero.jpg",
+  },
+  {
+    id: 18,
+    name: "Rewitalizacja Placu Dąbrowskiego",
+    lat: 51.752,
+    lng: 19.456,
+    status: "gotowe",
+    description: "Zakończona rewitalizacja placu z nową zielenią i miejscami do odpoczynku",
+    date: "2023-11-20",
+    image: "/hero.jpg",
+    progress: 100,
+    daysRemaining: 0,
+  },
+  {
+    id: 19,
+    name: "Bezpłatne kursy językowe dla mieszkańców",
+    lat: 51.768,
+    lng: 19.465,
+    status: "inicjatywy",
+    description:
+      "Projekt organizacji bezpłatnych kursów językowych (angielski, niemiecki) dla mieszkańców Łodzi.",
+    votes: 1087,
+    date: "2024-03-18",
+    image: "/hero.jpg",
+  },
+  {
+    id: 20,
+    name: "Modernizacja ul. Gdańskiej",
+    lat: 51.756,
+    lng: 19.438,
+    status: "w trakcie",
+    description: "Remont ulicy z nową nawierzchnią, chodnikami i oświetleniem",
+    date: "2024-01-25",
+    image: "/hero.jpg",
+    progress: 61,
+    daysRemaining: 50,
+  },
+  {
+    id: 21,
+    name: "Budowa nowego skateparku",
+    lat: 51.749,
+    lng: 19.442,
+    status: "planowane",
+    description: "Nowoczesny skatepark dla młodzieży z bezpiecznym wyposażeniem",
+    date: "2024-09-01",
+    image: "/hero.jpg",
+    progress: 0,
+    daysRemaining: 270,
+  },
+  {
+    id: 22,
+    name: "Więcej ławek i miejsc do odpoczynku",
+    lat: 51.760,
+    lng: 19.448,
+    status: "inicjatywy",
+    description:
+      "Inicjatywa zakłada zwiększenie liczby ławek i miejsc do odpoczynku w parkach i na głównych ulicach miasta.",
+    votes: 823,
+    date: "2024-03-14",
+    image: "/hero.jpg",
+  },
 ];
 
 // Sample data for before/after photos
@@ -175,6 +343,10 @@ export default function MapaPage() {
     lat: number;
     lng: number;
   } | null>(null);
+  const [votedInitiatives, setVotedInitiatives] = useState<Set<number>>(
+    new Set()
+  );
+  const [initiativeVotes, setInitiativeVotes] = useState<Record<number, number>>({});
 
   const updateSliderFromClientX = (clientX: number) => {
     const container = sliderContainerRef.current;
@@ -675,10 +847,28 @@ export default function MapaPage() {
             <MapComponent
               activeFilter={activeFilter}
               activeTab={activeTab}
-              locations={locations}
+              locations={locations.map((loc) => ({
+                ...loc,
+                votes: initiativeVotes[loc.id] !== undefined 
+                  ? initiativeVotes[loc.id] 
+                  : loc.votes,
+              }))}
               selectedLocationId={selectedLocationId}
               onMapClick={handleMapClick}
               reportLocation={reportLocation}
+              onVote={(initiativeId) => {
+                if (!votedInitiatives.has(initiativeId)) {
+                  setVotedInitiatives((prev) => new Set(prev).add(initiativeId));
+                  setInitiativeVotes((prev) => {
+                    const currentVotes = locations.find(l => l.id === initiativeId)?.votes || 0;
+                    return {
+                      ...prev,
+                      [initiativeId]: (prev[initiativeId] || currentVotes) + 1,
+                    };
+                  });
+                }
+              }}
+              votedInitiatives={votedInitiatives}
             />
           </motion.div>
 
