@@ -333,8 +333,9 @@ export default function MapComponent({
                     </button>
                   </>
                 )}
-                {/* Przyciski Zasubskrybuj i Udostępnij */}
-                <div className="mt-2 flex gap-2">
+                {/* Przyciski Zasubskrybuj i Udostępnij - tylko dla strony mapa, nie dla usług */}
+                {showStatus && (
+                  <div className="mt-2 flex gap-2">
                   <motion.button
                     onClick={(e) => {
                       e.preventDefault();
@@ -394,6 +395,7 @@ export default function MapComponent({
                     </svg>
                   </motion.button>
                 </div>
+                )}
               </div>
             </Popup>
           </MarkerWithAutoPopup>

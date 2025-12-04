@@ -67,11 +67,12 @@ Jeśli usługa nie pasuje, nadaj jej niski wynik (<30). Nie dodawaj żadnego inn
     const model = genAI.getGenerativeModel({ 
       model: "gemini-2.5-flash-lite",
       systemInstruction: systemPrompt,
+      generationConfig: {
+        temperature: 0,
+      },
     });
 
-    const result = await model.generateContent(userPrompt, {
-      temperature: 0,
-    });
+    const result = await model.generateContent(userPrompt);
 
     const response = result.response;
     let rawText = response.text() ?? "";

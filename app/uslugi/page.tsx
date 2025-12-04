@@ -297,6 +297,8 @@ export default function UslugiPage() {
   );
   const [useAi, setUseAi] = useState(true);
   const [isLoadingAi, setIsLoadingAi] = useState(false);
+  const [userAddress, setUserAddress] = useState("");
+  const [searchRadius, setSearchRadius] = useState("");
 
   const [aiMatchedIds, setAiMatchedIds] = useState<number[] | null>(null);
 
@@ -460,50 +462,83 @@ export default function UslugiPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex flex-col md:flex-row gap-3 items-stretch md:items-center"
+          className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm"
         >
-          <div className="flex-1 relative">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj usług, np. Miejsce do spędzenia wieczoru z partnerem..."
-              className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
-            />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
-              🔍
-            </span>
+          <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center mb-3">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Szukaj usług, np. Miejsce do spędzenia wieczoru z partnerem..."
+                className="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">
+                🔍
+              </span>
+            </div>
+            {/* Loading dots or results count */}
+            <div className="flex items-center justify-center min-w-[200px] h-12">
+              {isLoadingAi && useAi && query.trim() ? (
+                <div className="flex items-center gap-2">
+                  {[0, 1, 2].map((index) => (
+                    <motion.div
+                      key={index}
+                      className="w-3 h-3 bg-primary rounded-full"
+                      animate={{
+                        y: [0, -12, 0],
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        repeat: Infinity,
+                        delay: index * 0.2,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  ))}
+                </div>
+              ) : query.trim() && filteredServices.length > 0 ? (
+                <div className="text-sm font-semibold text-primary">
+                  Znaleziono {filteredServices.length}{" "}
+                  {filteredServices.length === 1
+                    ? "wynik"
+                    : filteredServices.length < 5
+                    ? "wyniki"
+                    : "wyników"}
+                </div>
+              ) : null}
+            </div>
           </div>
-          {/* Loading dots or results count */}
-          <div className="flex items-center justify-center min-w-[200px] h-12">
-            {isLoadingAi && useAi && query.trim() ? (
+          
+          {/* Additional search filters */}
+          <div className="flex flex-col md:flex-row gap-3 pt-3 border-t border-gray-200">
+            <div className="flex-1">
+              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                Twój adres
+              </label>
+              <input
+                type="text"
+                value={userAddress}
+                onChange={(e) => setUserAddress(e.target.value)}
+                placeholder="np. ul. Piotrkowska 123"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+            <div className="md:w-48">
+              <label className="block text-xs font-semibold text-gray-700 mb-1">
+                Promień wyszukiwania
+              </label>
               <div className="flex items-center gap-2">
-                {[0, 1, 2].map((index) => (
-                  <motion.div
-                    key={index}
-                    className="w-3 h-3 bg-primary rounded-full"
-                    animate={{
-                      y: [0, -12, 0],
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      repeat: Infinity,
-                      delay: index * 0.2,
-                      ease: "easeInOut",
-                    }}
-                  />
-                ))}
+                <input
+                  type="number"
+                  value={searchRadius}
+                  onChange={(e) => setSearchRadius(e.target.value)}
+                  min="0"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                <span className="text-sm text-gray-600 whitespace-nowrap">km</span>
               </div>
-            ) : query.trim() && filteredServices.length > 0 ? (
-              <div className="text-sm font-semibold text-primary">
-                Znaleziono {filteredServices.length}{" "}
-                {filteredServices.length === 1
-                  ? "wynik"
-                  : filteredServices.length < 5
-                  ? "wyniki"
-                  : "wyników"}
-              </div>
-            ) : null}
+            </div>
           </div>
         </motion.div>
 
