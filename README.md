@@ -10,8 +10,7 @@ The goal of the project is to present a modern, interactive way of:
 * improving residents’ experience through contextual information and AI.
 
 
-https://www.canva.com/design/DAG6d6VGnJE/7IxrV03ciyX4oNa8FDBGCw/edit?utm_content=DAG6d6VGnJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-[BRIDGE PRESENTATION]([https://uml.lodz.pl](https://www.canva.com/design/DAG6d6VGnJE/7IxrV03ciyX4oNa8FDBGCw/edit?utm_content=DAG6d6VGnJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[BRIDGE PRESENTATION](https://www.canva.com/design/DAG6d6VGnJE/7IxrV03ciyX4oNa8FDBGCw/edit?utm_content=DAG6d6VGnJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Key Features
 
