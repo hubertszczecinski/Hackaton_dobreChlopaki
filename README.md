@@ -2,76 +2,75 @@
 
 **by Dobre Chłopaki**
 
-BRIDGE to prototyp rozszerzeń aplikacji **Karta Łodzianina**, zaprojektowany podczas hackathonu **Łódź_Hack**.  
-Celem projektu jest przedstawienie nowoczesnego, interaktywnego sposobu:
+BRIDGE is a prototype extension for the **Karta Łodzianina** application, designed during the **Łódź_Hack** hackathon.  
+The goal of the project is to present a modern, interactive way of:
 
-* wizualizacji projektów miejskich,  
-* inteligentnego wyszukiwania usług,  
-* poprawy doświadczeń mieszkańców poprzez kontekstowe informacje i AI.
+* visualizing urban development projects,  
+* intelligently searching for city services,  
+* improving residents’ experience through contextual information and AI.
 
----
 
-## Kluczowe Funkcje
+https://www.canva.com/design/DAG6d6VGnJE/7IxrV03ciyX4oNa8FDBGCw/edit?utm_content=DAG6d6VGnJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+[BRIDGE PRESENTATION]([https://uml.lodz.pl](https://www.canva.com/design/DAG6d6VGnJE/7IxrV03ciyX4oNa8FDBGCw/edit?utm_content=DAG6d6VGnJE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-### 1. „Łódź na mapie”: Interaktywna Wizualizacja Miasta
+## Key Features
 
-Naszym celem było stworzenie intuicyjnego sposobu prezentacji inwestycji miejskich.
+### 1. “Łódź on the Map”: Interactive City Visualization
 
-**Co oferuje moduł:**
+Our goal was to create an intuitive way to present urban investments.
 
-* Interaktywną **mapę miasta** (Leaflet + React-Leaflet)  
-* Przejrzyście przedstawione **projekty miejskie**, podzielone według statusu:
-  * 🟠 *Planowane*  
-  * 🟡 *W trakcie* (z paskiem postępu)  
-  * 🟢 *Gotowe*  
-  * 🔵 *Inicjatywy społeczne* (z opcją głosowania)  
-* **Filtrowanie** po statusach i kategoriach  
-* Rozbudowane **karty projektów**, zawierające:
-  * opis,  
-  * daty realizacji,  
-  * zdjęcia „przed / po”,  
-  * szczegółowe informacje  
-* Subtelne **animacje UX**, ułatwiające nawigację
+**What the module offers:**
+
+* An interactive **city map** (Leaflet + React-Leaflet)  
+* Clearly presented **urban projects**, categorized by status:
+  * 🟠 *Planned*  
+  * 🟡 *In Progress* (with a progress bar)  
+  * 🟢 *Completed*  
+  * 🔵 *Community Initiatives* (with a voting option)  
+* **Filtering** by status and category  
+* Detailed **project cards** containing:
+  * descriptions,  
+  * implementation dates,  
+  * “before / after” photos,  
+  * detailed information  
+* Subtle **UX animations** that enhance navigation
 
 ![alt text](solution_screenshots/lodz_na_mapie.png)  
 ![alt text](solution_screenshots/przed_i_po.png)
 
----
+### 2. Intelligent Service Search (`/services`)
 
-### 2. Inteligentna wyszukiwarka usług (`/uslugi`)
+A modern, AI-powered search engine that allows residents to easily find services in the city.
 
-Nowoczesna wyszukiwarka z AI, umożliwiająca mieszkańcom łatwe odnajdywanie usług w mieście.
+**Key capabilities:**
 
-**Najważniejsze możliwości:**
-
-* **Semantyczne wyszukiwanie AI (Google Gemini)**  
-* Obsługa naturalnych zapytań, np.:  
-  > „Miejsce na spokojny wieczór z partnerem”
-* **Personalizowane rekomendacje** usług  
-* Wyniki prezentowane **na mapie**  
-* **Filtrowanie lokalizacyjne**: adres + promień  
-* Pełny katalog usług miejskich, w tym:
-  * gastronomia,  
-  * rozrywka (kina, escape roomy, wspinaczki),  
-  * motoryzacja (mechanicy, ładowarki EV),  
-  * zdrowie, edukacja,  
-  * sport i rekreacja,  
-  * coworking i biura  
+* **AI semantic search (Google Gemini)**  
+* Support for natural language queries, e.g.:  
+  > “A place for a quiet evening with my partner”
+* **Personalized service recommendations**  
+* Results displayed **on a map**  
+* **Location-based filtering**: address + radius  
+* A full catalog of city services, including:
+  * gastronomy,  
+  * entertainment (cinemas, escape rooms, climbing gyms),  
+  * automotive services (mechanics, EV chargers),  
+  * healthcare, education,  
+  * sports and recreation,  
+  * coworking spaces and offices  
 
 ![alt text](solution_screenshots/uslugi.png)
 
----
 
-## Technologia
+## Technology
 
-### Stack technologiczny
+### Tech Stack
 
 * **Framework:** Next.js 16.0.6 (App Router)  
-* **Język:** TypeScript 5  
+* **Language:** TypeScript 5  
 * **UI:** React 19.2.0  
 * **Styling:** Tailwind CSS 4  
-* **Mapy:**  
+* **Maps:**  
   * Leaflet 1.9.4  
   * React-Leaflet 5.0.0  
-* **Animacje:** Framer Motion 12.23.25  
+* **Animations:** Framer Motion 12.23.25  
 * **AI / ML:** Google Generative AI – Gemini 2.5 Flash Lite
